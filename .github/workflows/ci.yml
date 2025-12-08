@@ -27,6 +27,7 @@ jobs:
       - name: Run tests
         run: npm test --if-present
 
+
   deploy:
     name: Deploy to GitHub Pages
     needs: test
@@ -36,8 +37,6 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -51,7 +50,14 @@ jobs:
       - name: Build project
         run: npm run build
 
+      - name: Set Git identity
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+
       - name: Deploy to GitHub Pages
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx gh-pages -d dist --repo https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
+        run: |
+          npx gh-pages -d dist \
+            --repo https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git
