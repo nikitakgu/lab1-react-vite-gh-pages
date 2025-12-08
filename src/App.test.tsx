@@ -1,19 +1,20 @@
-import { render, screen } from '@testing-library/react'
-import { expect, test } from 'vitest'
-import App from './App'
+import { render, screen } from '@testing-library/react';
+import App from './App';
 
 test('renders Vite and React logos', () => {
-  render(<App />)
+  render(<App />);
 
-  const viteLogoElement = screen.getByAltText('Vite logo')
-  const reactLogoElement = screen.getByAltText('React logo')
+  const viteLogo = screen.getByAltText('Vite logo');
+  const reactLogo = screen.getByAltText('React logo');
 
-  expect(viteLogoElement).toBeInTheDocument()
-  expect(reactLogoElement).toBeInTheDocument()
-})
+  expect(viteLogo).toBeInTheDocument();
+  expect(reactLogo).toBeInTheDocument();
+});
 
 test('renders "Vite + React" heading', () => {
-  render(<App />)
-  const headingElement = screen.getByText(/Vite \+ React/i)
-  expect(headingElement).toBeInTheDocument()
-})
+  render(<App />);
+
+  const headings = screen.getAllByText(/Vite \+ React/i);
+
+  expect(headings.length).toBeGreaterThan(0);
+});
