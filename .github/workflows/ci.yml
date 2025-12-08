@@ -12,7 +12,7 @@ jobs:
   test:
     name: Run Tests
     runs-on: ubuntu-latest
-    continue-on-error: true  # ← ЭТА СТРОКА ИСПРАВИТ ⚠️ НА ✅
+  # ← ЭТА СТРОКА ИСПРАВИТ ⚠️ НА ✅
 
     steps:
       - name: Checkout code
