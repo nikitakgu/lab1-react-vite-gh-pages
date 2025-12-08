@@ -1,12 +1,15 @@
-﻿import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+﻿import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  base: "/lab1-react-vite-gh-pages/",
   plugins: [react()],
+
+  // ОБЯЗАТЕЛЬНО: базовый путь для GitHub Pages
+  base: '/lab1-react-vite-gh-pages/',
+
+  // Настройки Vitest — ДОЛЖНЫ быть внутри defineConfig
   test: {
-    globals: true,
-    environment: "jsdom",
-    setupFiles: "./src/setupTests.ts",
-  },
-});
+    environment: 'jsdom'
+  }
+})
