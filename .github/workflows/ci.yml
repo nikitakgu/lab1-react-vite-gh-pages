@@ -12,7 +12,6 @@ jobs:
   test:
     name: Run Tests
     runs-on: ubuntu-latest
-  # ← ЭТА СТРОКА ИСПРАВИТ ⚠️ НА ✅
 
     steps:
       - name: Checkout code
@@ -28,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Run Vitest tests
-        run: npm run test || echo "Tests skipped or failed, continuing..."
+        run: npm run test
 
   deploy:
     name: Deploy to GitHub Pages
