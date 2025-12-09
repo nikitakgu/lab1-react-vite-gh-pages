@@ -1,20 +1,18 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { render, screen } from '@testing-library/react'
+import App from './App'
 
-test('renders Vite and React logos', () => {
-  render(<App />);
+describe('App component', () => {
+  test('renders page title', () => {
+    render(<App />)
 
-  const viteLogo = screen.getByAltText('Vite logo');
-  const reactLogo = screen.getByAltText('React logo');
+    // Проверяем заголовок
+    expect(screen.getByText(/Работа с API в React/i)).toBeInTheDocument()
+  })
 
-  expect(viteLogo).toBeInTheDocument();
-  expect(reactLogo).toBeInTheDocument();
-});
+  test('button is visible', () => {
+    render(<App />)
 
-test('renders "Vite + React" heading', () => {
-  render(<App />);
-
-  const headings = screen.getAllByText(/Vite \+ React/i);
-
-  expect(headings.length).toBeGreaterThan(0);
-});
+    // Проверяем кнопку
+    expect(screen.getByText(/Показать пользователей/i)).toBeInTheDocument()
+  })
+})
